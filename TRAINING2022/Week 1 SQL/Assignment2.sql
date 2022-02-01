@@ -76,3 +76,36 @@ from
     emp
 ORDER BY
     annsal;
+
+####################################################
+
+--9.  Display the Empno, Ename, job, Hiredate, Exp of all Mgrs
+--SELECT 
+--    empno, ename, job, hiredate('01-01-80')- hiredate(CURRENT_DATE)
+--from 
+--emp;
+
+SELECT 
+    empno, ename, job, hiredate, ROUND(MONTHS_BETWEEN(SYSDATE,hiredate),2) as exp
+FROM
+    emp
+WHERE
+    empno 
+IN
+    (
+        SELECT
+            mgr
+        FROM
+            emp
+    );
+    
+####################################################
+
+--10.  List the Empno, Ename, Sal, Exp of all emps working for Mgr 7369
+
+SELECT 
+    empno, ename, sal, hiredate, ROUND(MONTHS_BETWEEN(SYSDATE,hiredate),2) as exp, 
+FROM
+    emp
+WHERE
+    mgr = 7369;

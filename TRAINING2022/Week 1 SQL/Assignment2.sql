@@ -412,3 +412,15 @@ FROM
     emp
 WHERE
     ename = 'SMITH'
+
+####################################################    
+--28.  Display the location of SMITH
+
+SELECT 
+    ename, location 
+from 
+    emp e, branch b 
+WHERE 
+    ename = 'SMITH' 
+    AND
+    b.branchno = e.branchno
